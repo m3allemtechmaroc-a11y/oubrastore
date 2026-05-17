@@ -68,14 +68,15 @@ export default function AdminHeroPage() {
   };
 
   const handleCreate = async () => {
-    if (!form.title) {
-      toast.error("Le titre est requis");
-      return;
-    }
     if (!form.image) {
       toast.error("L'image est requise");
       return;
     }
+
+    const payload = {
+      ...form,
+      title: form.title || "Bannière",
+    };
 
     try {
       const res = await fetch("/api/hero", {
@@ -84,7 +85,7 @@ export default function AdminHeroPage() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify(payload)
       });
       if (res.ok) {
         toast.success("Slide créé avec succès !");
@@ -100,14 +101,15 @@ export default function AdminHeroPage() {
   };
 
   const handleUpdate = async (id: string) => {
-    if (!form.title) {
-      toast.error("Le titre est requis");
-      return;
-    }
     if (!form.image) {
       toast.error("L'image est requise");
       return;
     }
+
+    const payload = {
+      ...form,
+      title: form.title || "Bannière",
+    };
 
     try {
       const res = await fetch(`/api/hero/${id}`, {
@@ -116,7 +118,7 @@ export default function AdminHeroPage() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify(payload)
       });
       if (res.ok) {
         toast.success("Slide mis à jour !");
@@ -212,7 +214,7 @@ export default function AdminHeroPage() {
             {/* Title & Subtitle inputs */}
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Titre du Slide *</label>
+                <label className="block text-xs font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Titre du Slide (Interne / Optionnel)</label>
                 <input
                   type="text"
                   value={form.title}
