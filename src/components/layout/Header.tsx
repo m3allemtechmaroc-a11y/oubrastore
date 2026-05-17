@@ -72,7 +72,7 @@ export default function Header() {
         <div className={`w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto ${
           scrolled
             ? "max-w-5xl mx-auto bg-white/70 dark:bg-zinc-950/70 border border-primary-400/25 rounded-full shadow-[0_15px_40px_-10px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.55)] backdrop-blur-md px-6 py-1"
-            : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-transparent py-2"
+            : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-black/[0.04] dark:border-white/[0.04] py-2"
         }`}>
           <div className="flex items-center justify-between h-14 lg:h-16">
             

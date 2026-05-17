@@ -87,7 +87,7 @@ export default function HeroCarousel() {
   };
 
   return (
-    <section className="relative w-full aspect-[2.1/1] sm:aspect-[2.3/1] md:aspect-[2.6/1] lg:aspect-[2.9/1] xl:aspect-[3.2/1] overflow-hidden bg-white dark:bg-zinc-950 pt-16 lg:pt-20">
+    <section className="relative w-full aspect-[2.1/1] sm:aspect-[2.3/1] md:aspect-[2.6/1] lg:aspect-[2.9/1] xl:aspect-[3.2/1] overflow-hidden bg-white dark:bg-zinc-950 mt-16 lg:mt-20">
       
       <AnimatePresence mode="popLayout" custom={direction}>
         <motion.div
