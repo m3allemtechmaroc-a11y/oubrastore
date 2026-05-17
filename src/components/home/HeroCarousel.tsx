@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Magnetic from "@/components/ui/Magnetic";
@@ -10,27 +9,22 @@ const defaultSlides = [
   {
     id: "1",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80",
-    buttonLink: "/products",
   },
   {
     id: "2",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80",
-    buttonLink: "/products",
   },
   {
     id: "3",
     image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1920&q=80",
-    buttonLink: "/category/informatique",
   },
   {
     id: "4",
     image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=1920&q=80",
-    buttonLink: "/category/imprimerie",
   },
   {
     id: "5",
     image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1920&q=80",
-    buttonLink: "/products?isPromotion=true",
   },
 ];
 
@@ -106,10 +100,10 @@ export default function HeroCarousel() {
           transition={{ type: "spring", stiffness: 100, damping: 18, mass: 0.5 }}
           className="absolute inset-0 overflow-hidden"
         >
-          {/* Double-Image Aspect Ratio Solution: Shows 100% of the image (bg-contain) backed by high-vibrancy color blur to remove side borders */}
+          {/* Double-Image Aspect Ratio Solution: Shows 100% of the image (bg-contain) backed by color blur backing */}
           <div className="absolute inset-0 transition-all duration-1000 scale-[1.01]">
             
-            {/* 1. Fully vibrant background backing (opacity 100 with 3xl blur to match banner colors perfectly without dark margins) */}
+            {/* 1. Fully vibrant background backing (covers background margins smoothly without black margins) */}
             <div
               className="absolute inset-0 bg-cover bg-center blur-3xl opacity-100 scale-105 pointer-events-none"
               style={{ backgroundImage: `url(${slide.image})` }}
@@ -121,40 +115,6 @@ export default function HeroCarousel() {
               style={{ backgroundImage: `url(${slide.image})` }}
             />
             
-          </div>
-
-          {/* Content panel: Sleek, clean glass capsule centered EXACTLY in the middle of the carousel */}
-          <div className="relative h-full flex items-center justify-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-center">
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 25 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 90, damping: 15, delay: 0.1 }}
-                className="backdrop-blur-md bg-white/40 dark:bg-zinc-900/25 border border-white/40 dark:border-white/10 rounded-full p-2.5 sm:p-3 shadow-[0_15px_35px_rgba(0,0,0,0.06)] flex items-center justify-center gap-3.5 animate-float"
-              >
-                {/* 1. Découvrir Button in Yellow */}
-                <Magnetic range={45} strength={0.3}>
-                  <Link
-                    href={slide.buttonLink || "/products"}
-                    className="btn-gold block text-center text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:shadow-glow transition-all duration-300 shrink-0"
-                  >
-                    Découvrir
-                  </Link>
-                </Magnetic>
-
-                {/* 2. Voir les produits Button in Yellow */}
-                <Magnetic range={45} strength={0.3}>
-                  <Link
-                    href="/products"
-                    className="btn-gold block text-center text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:shadow-glow transition-all duration-300 shrink-0"
-                  >
-                    Voir les produits
-                  </Link>
-                </Magnetic>
-              </motion.div>
-
-            </div>
           </div>
         </motion.div>
       </AnimatePresence>
